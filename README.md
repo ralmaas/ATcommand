@@ -11,4 +11,8 @@ The main task in this operation is to have a handshake between the UART-write an
 The plan is to have a sort of "token" generated on transmitt that is then tested for an "OK" or "ERROR" response in the receiving part of the code.
 
 ## Short description:
-Test
+Before using the WiFi settings (SSID and password) you need to use the "Select AT Command" to set the "WiFi mode Client".
+
+Then hit the CWJAP-button.
+
+The "Lookup Host" is ment for getting a host IP, enter for instance www.cisco.com followed by a CR and an IP-address should show in the textbox on the right. The IP address will also be put into the "Ping Host" textbox. Just move the cursor to the field and hit CR and the result should be dislayed.
