@@ -1,0 +1,10 @@
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.csprojAssemblyReference.cache
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.ATcontrol.resources
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.Properties.Resources.resources
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.csproj.GenerateResource.cache
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.csproj.CoreCompileInputs.cache
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\bin\Debug\ATdebug.exe.config
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\bin\Debug\ATdebug.exe
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\bin\Debug\ATdebug.pdb
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.exe
+C:\Users\roara\Documents\VS2017\Projects\ATdebug\ATdebug\ATdebug\obj\Debug\ATdebug.pdb
