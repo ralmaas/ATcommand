@@ -1,7 +1,7 @@
 # ATcommand
 A small Windows utility for testing AT-commands.
 
-![Screendump](/doc/screen.png)
+![Screendump](/doc/screen_1.2.png)
 
 The program was used when testing an ESP-01 with AT Firware before implementing it with a Raspberry Pico to give it Internet access.
 
@@ -18,3 +18,8 @@ Before using the WiFi settings (SSID and password) you need to use the "Select A
 Then hit the CWJAP-button.
 
 The "Lookup Host" is ment for getting a host IP, enter for instance www.cisco.com followed by a CR and an IP-address should show in the textbox on the right. The IP address will also be put into the "Ping Host" textbox. Just move the cursor to the field and hit CR and the result should be dislayed.
+
+## Version 1.2
+Bitcoin demo-code is now operational!
+Decoding of json-data done using the Netwtonsoft.Json package.
+![Screendump](/doc/bitcoin.png)
