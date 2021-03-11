@@ -13,7 +13,7 @@ The main task in this operation is to have a handshake between the UART-write an
 The plan is to have a sort of "token" generated on transmitt that is then tested for "OK" or "ERROR" response in the receiving part of the code. The "bitcoin"-code is currently just using a delay between each AT command being submitted
 
 ## Short description:
-Before using the WiFi settings (SSID and password) you need to use the "Select AT Command" to set "WiFi mode Client".
+Before using the WiFi settings (SSID and password) you need to use the "Select AT Command" to set "WiFi mode Client". V1.2: ESP-01 now set to client mode _before_ connecting!
 
 Then hit the CWJAP-button.
 
