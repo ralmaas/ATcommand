@@ -345,41 +345,26 @@ namespace ATdebug
             }
         }
 
-        private void tbWeb_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Return)
-            {
-                string buffer = tbWeb.Text;
-                if (buffer.Length > 10)
-                {
-                    if (_serialPort.IsOpen)
-                    {
-                        // 1.   Send AT+CIPMUX=1
-                        // 2.   Send: AT+CIPSTART=4,"TCP","<host-part>",80
-                        // 3.   Build string
-                        //          GET <path> HTTP/1.1/r/n
-                        //          User-agent: ESP-01
-                        //          Host: <host-part>/r/n\r\n
-                        // 4. Send AT+CIPSEND=4,<total length incl \r\n>
-                        sendCmd(buffer, 10);
-                    }
-                }
-            }
-        }
-
-        private void btnTest_Click(object sender, EventArgs e)
+        private void getWebContent(string host, string file, int flagSomething)
         {
             Boolean status = false;
             Boolean cont = true;
+            string string1 = "";
+            string string2 = "";
+            string string3 = "";
+            string string4 = "";
 
             if (_serialPort.IsOpen)
             {
                 // Prepare to analyze the returned json-data
-                flagBitcoin = 1;
+                if (flagSomething == 1)
+                    flagBitcoin = 1;
+                else
+                    flagBitcoin = 0;
 
                 saveLog("Starting:", 1);
                 saveLog("AT+CIPMUX=0", 1);
-                
+
                 status = sendCmd("AT+CIPMUX=0", 5);
                 if (!status)
                 {
@@ -389,17 +374,24 @@ namespace ATdebug
                 if (status && cont)
                 {
                     saveLog("AT+CIPSTART", 10);
-                    status = sendCmd("AT+CIPSTART=\"TCP\",\"api.coindesk.com\",80", 10);
+                    status = sendCmd("AT+CIPSTART=\"TCP\",\"" + host + "\",80", 10);
                     if (!status)
                     {
                         tbDebug.Text = "Timeout CIPSTART";
                         cont = false;
                     }
-                } 
+                }
 
                 if (status && cont)
                 {
-                    status = sendCmd("AT+CIPSEND=105", 10);
+                    // prepare the request
+                    string1 = "GET " + file + " HTTP/1.1\r\n";
+                    string2 = "User-agent: ESP-01\r\n";
+                    string3 = "Host: " + host + "\r\n";
+                    string4 = "Connection: close\r\n";
+                    int request_length = 2 + string1.Length + string2.Length + string3.Length + string4.Length;
+
+                    status = sendCmd("AT+CIPSEND=" + request_length.ToString(), 10);
                     if (!status)
                     {
                         tbDebug.Text = "Timeout CIPSEND";
@@ -409,14 +401,10 @@ namespace ATdebug
 
                 if (status && cont)
                 {
-                    _serialPort.Write("GET /v1/bpi/currentprice.json HTTP/1.1");
-                    _serialPort.Write("\r\n");
-                    _serialPort.Write("User-agent: ESP-01");
-                    _serialPort.Write("\r\n");
-                    _serialPort.Write("Host: api.coindesk.com");
-                    _serialPort.Write("\r\n");
-                    _serialPort.Write("Connection: close");
-                    _serialPort.Write("\r\n");
+                    _serialPort.Write(string1);
+                    _serialPort.Write(string2);
+                    _serialPort.Write(string3);
+                    _serialPort.Write(string4);
                     status = sendCmd("", 30);
                     if (!status)
                     {
@@ -424,6 +412,44 @@ namespace ATdebug
                         cont = false;
                     }
                 }
+            }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+            getWebContent("api.coindesk.com", "/v1/bpi/currentprice.json", 1);
+        }
+        private void tbWeb_KeyDown(object sender, KeyEventArgs e)
+        {
+            int p = 0;
+            int q = 0;
+
+            if (e.KeyCode == Keys.Return)
+            {
+                string url = tbWeb.Text;
+                if (url.Length > 10)
+                {
+                    // Fetch and verify a complete URL
+                    // http://www.something.com/index3.html
+                    p = url.IndexOf('/');
+                    if (p > 0)
+                    {
+                        p += 2;
+                        q = url.IndexOf('/', p);
+                        if (q > 0)
+                        {
+                            // I now have the whole string
+                            string host = url.Substring(p, q - p);
+                            string file = url.Substring(q);
+                            // string buffer = String.Format("I have host: {0} and file {1}", host, file);
+                            // MessageBox.Show(buffer, "Summary");
+                            if (_serialPort.IsOpen)
+                                getWebContent(host, file, 0);
+                        }
+                    }
+                }
+                if (q == 0)
+                    MessageBox.Show("Something was found in error in the URL-string\r\nShould be on the format http://192.168.1.10/index.html\r\nor http://www.someserver.com/indexpage.html", "Error in URL");
             }
         }
 

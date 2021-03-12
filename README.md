@@ -23,3 +23,5 @@ The "Lookup Host" is ment for getting a host IP, enter for instance www.cisco.co
 Bitcoin demo-code is now operational!
 Decoding of json-data done using the Netwtonsoft.Json package.
 ![Screendump](/doc/bitcoin.png)
+## Version 1.3
+You may now enter a complet URL-string - for instance: http://192.168.1.10/index.html

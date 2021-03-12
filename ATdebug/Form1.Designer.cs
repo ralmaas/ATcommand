@@ -305,7 +305,7 @@ namespace ATdebug
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(153, 224);
+            this.label9.Location = new System.Drawing.Point(141, 224);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(80, 13);
             this.label9.TabIndex = 28;
@@ -336,7 +336,7 @@ namespace ATdebug
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(168, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "ATcommand ver. 1.2 @ralm/2021";
+            this.label10.Text = "ATcommand ver. 1.3 @ralm/2021";
             // 
             // timer1
             // 
