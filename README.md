@@ -7,17 +7,16 @@ The program was used when testing an ESP-01 with AT Firware before implementing 
 
 Thanks to Adafruit for code to fetch current Bitcoin price as a small demo.
 
-The code is NOT finished - currently not handling the text entered into the "Get Web-page" textbox, but the code behind the "bitcoin test" button is an indication of what to be done.
+The AT-version installed on the ESP-01 is:
 
-The main task in this operation is to have a handshake between the UART-write and the response which is a separate thread.
-The plan is to have a sort of "token" generated on transmitt that is then tested for "OK" or "ERROR" response in the receiving part of the code. The "bitcoin"-code is currently just using a delay between each AT command being submitted
+>AT version:1.7.4.0(May 11 2020 19:13:04)
+>SDK version:3.0.4(9532ceb)
+>compile time:May 27 2020 10:12:17
+>Bin version(Wroom 02):1.7.4
 
 ## Short description:
-Before using the WiFi settings (SSID and password) you need to use the "Select AT Command" to set "WiFi mode Client". V1.2: ESP-01 now set to client mode _before_ connecting!
-
-Then hit the CWJAP-button.
-
-The "Lookup Host" is ment for getting a host IP, enter for instance www.cisco.com followed by a CR and an IP-address should show in the textbox on the right. The IP address will also be put into the "Ping Host" textbox. Just move the cursor to the field and hit CR and the result should be dislayed.
+The "Lookup Host" is ment for getting a host IP, enter for instance www.cisco.com followed by a CR and an IP-address should show in the textbox on the right. 
+The IP address will also be put into the "Ping Host" textbox. Just move the cursor to the field and hit CR and the result should be dislayed.
 
 ## Version 1.2
 Bitcoin demo-code is now operational!
