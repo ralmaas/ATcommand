@@ -24,5 +24,6 @@ Decoding of json-data done using the Netwtonsoft.Json package.
 ![Screendump](/doc/bitcoin.png)
 ## Version 1.3
 The textbox "Get Web-page" is now operative!
+Note: In this version port 80 is hard-coded, but it could also suppport https on port 443...
 
 PS: The textbox to the left of the Clear-button is used for debug-messages.
